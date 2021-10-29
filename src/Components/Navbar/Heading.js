@@ -4,23 +4,28 @@ import { Link } from 'react-router-dom'
 const Heading = () => {
     return (
         <div>
-            <Navbar bg="primary" variant='dark' expand="lg">
+            <Navbar bg="dark" variant='dark' expand="lg">
                 <Container>
                     <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
-                            className="me-auto my-2 my-lg-0"
+                            className="ms-auto my-2 my-lg-0"
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/servives">Services</Nav.Link>
-                            <Nav.Link as={Link} to="/contact">Contact us</Nav.Link>
-                            <Nav.Link as={Link} to="/cart"><i class="fas fa-cart-plus"></i></Nav.Link>
-                            
+                            <Nav.Link className='text-white ' as={Link} to="/home">Home</Nav.Link>
+                            <Nav.Link className='text-white ' as={Link} to="/servives">Services</Nav.Link>
+                            <Nav.Link className='text-white ' as={Link} to="/contact">Contact us</Nav.Link>
+                            <Nav.Link className='text-white ' as={Link} to="/cart">
+                                <span className='absolute p-2 rounded-circle'>
+                                    1
+                                </span>
+                                <i className="fas fa-cart-plus"></i>
+                            </Nav.Link>
+
+                            <Button variant="danger">Register</Button>
                         </Nav>
-                        <Button variant="dark">Register</Button>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

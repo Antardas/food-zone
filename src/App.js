@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import Heading from './Components/Navbar/Heading';
+import AddFood from './Components/AddFood/AddFood';
 
 function App() {
   return (
@@ -17,6 +18,12 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Home></Home>
+          </Route>
+          <Route exact path='/home'>
+            <Home></Home>
+          </Route>
+          <Route exact path='/addFood'>
+            <AddFood></AddFood>
           </Route>
         </Switch>
       </Router>
