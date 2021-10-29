@@ -9,21 +9,21 @@ const Service = () => {
                 <Card.Body>
                     <Card.Title>Card title</Card.Title>
                     <Card.Text>
-                        <p>
+                        
                             This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.
-                        </p>
+                        
                         <small className='block'> <b>Delivery time</b>
                             Your order will be delivered in 20 minutes.</small>
                     </Card.Text>
                     <div className='d-flex justify-content-evenly'>
                         <div>
-                            <span className='bg-warning px-2 rounded'>3.8 <small><i class="fas fa-star"></i></small></span>
+                            <span className='bg-warning px-2 rounded'>3.8 <small><i className="fas fa-star"></i></small></span>
                             <small> | DINNING</small>
 
                         </div>
                         <div>
-                            <span className='bg-warning px-2 rounded'>3.8 <small><i class="fas fa-star"></i></small></span>
+                            <span className='bg-warning px-2 rounded'>3.8 <small><i className="fas fa-star"></i></small></span>
                             <small> | DELIVERY</small>
                         </div>
                     </div>

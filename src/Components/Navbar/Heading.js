@@ -6,7 +6,9 @@ import useFirebase from '../../hooks/useFirebase';
 const Heading = () => {
     const { user,
         setuser,
-        signInGoogle } = useFirebase();
+        signInGoogle,
+        signOutUser } = useFirebase();
+    console.log(user);
     return (
         <div>
             <Navbar bg="dark" variant='dark' expand="lg">
@@ -29,9 +31,9 @@ const Heading = () => {
                                 <i className="fas fa-cart-plus"></i>
                             </Nav.Link>
                             {
-                                user?.email ? <Button variant="danger">Log out</Button> : <Button onClick={signInGoogle} variant="danger">Register</Button>
-                            
-}
+                                user?.email ? <Button onClick={signOutUser} variant="danger">Log out</Button> : <Button onClick={signInGoogle} variant="danger">Register</Button>
+
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
