@@ -1,21 +1,20 @@
+import { useEffect, useState } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
-import { useState } from 'react';
 import initializeAuthentication from '../Firebase/firebase.initialize';
 initializeAuthentication();
 
-
 const useFirebase = () => {
     const auth = getAuth();
-    const [user, setuser] = useState({})
+    const [user, setUser] = useState({})
     // Sign in With Google
-
+    console.log('calling useFirebase')
     const signInGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setuser(user);
+                setUser(user);
             }).catch(error => alert(error.message));
 
 
@@ -23,25 +22,31 @@ const useFirebase = () => {
 
     //Sing out user
     const signOutUser = () => {
-        signOut(auth)
-            .then(() => {
-                setuser({});
-            })
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            setUser({})
+        }).catch((error) => {
+            // An error happened.
+        });
     }
 
     // State Change Page reload
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setuser(user);
-        }else {
-            setuser({});
-        }
-    })
 
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+
+                setUser({});
+            }
+        })
+
+    }, [])
 
     return {
         user,
-        setuser,
+        setUser,
         signInGoogle,
         signOutUser
     }

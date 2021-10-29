@@ -1,14 +1,15 @@
 import React from 'react';
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import useFirebase from '../../hooks/useFirebase';
 
 const Heading = () => {
     const { user,
-        setuser,
+        setUser,
         signInGoogle,
-        signOutUser } = useFirebase();
-    console.log(user);
+        signOutUser } = useAuth();
+    // console.log(signOutUser());
     return (
         <div>
             <Navbar bg="dark" variant='dark' expand="lg">
@@ -31,7 +32,7 @@ const Heading = () => {
                                 <i className="fas fa-cart-plus"></i>
                             </Nav.Link>
                             {
-                                user?.email ? <Button onClick={signOutUser} variant="danger">Log out</Button> : <Button onClick={signInGoogle} variant="danger">Register</Button>
+                                user.email ? [<Nav.Link className='text-white ' as={Link} to="/contact">Manage</Nav.Link> ,<Button onClick={signOutUser} variant="danger">Log out</Button>] : <Button onClick={signInGoogle} variant="danger">Register</Button>
 
                             }
                         </Nav>

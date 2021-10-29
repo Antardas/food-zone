@@ -9,6 +9,7 @@ const AddFood = () => {
         axios.post('http://localhost:5000/addFood', {
             data
         }).then(res => {
+            console.log(res.data);
             if (res.data.insertedId) {
                 alert('Your product Added');
                 reset();
@@ -30,7 +31,7 @@ const AddFood = () => {
                         </Col>
                         <Col>
                             <label className='m-2' htmlFor="description">Description</label>
-                            <input className='form-control'  type="text" id='description' placeholder="description" {...register("description", { required: true, maxLength: 100 })} />
+                            <input className='form-control'  type="text" id='description' placeholder="description" {...register("description", { required: true, })} />
                         </Col>
                         <Col>
                             <label className='m-2' htmlFor="price">Price</label>

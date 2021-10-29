@@ -1,0 +1,11 @@
+.dark-yello-text {
+    color: #FCA311;
+}
+.contact-chef {
+    position: absolute;
+    top: -2.4rem;
+}
+.contact-chef img {
+    display: block;
+width: 18rem;
+}

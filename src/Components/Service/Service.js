@@ -1,38 +1,36 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 
-const Service = () => {
+const Service = ({ food }) => {
+    const { _id, foodName, description, price, foodImg, deliveryStar, dinningStart } = food;
+    const handleBuyNow = (id) => {
+        console.log(id);
+    }
     return (
         <Col>
             <Card>
-                <Card.Img variant="top" src="https://b.zmtcdn.com/data/pictures/1/19211101/ba1d13d506801211a77a0357f382c620.jpg?output-format=webp&fit=around|771.75:416.25&crop=771.75:416.25;*,*" />
-                <Card.Body>
-                    <Card.Title>Card title</Card.Title>
+                <Card.Img variant="top" src={foodImg} />
+                <Card.Body><Card.Title>{foodName}</Card.Title>
                     <Card.Text>
-                        
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                        
-                        <small className='block'> <b>Delivery time</b>
-                            Your order will be delivered in 20 minutes.</small>
+                        {description.slice(0, 50)}
                     </Card.Text>
                     <div className='d-flex justify-content-evenly'>
                         <div>
-                            <span className='bg-warning px-2 rounded'>3.8 <small><i className="fas fa-star"></i></small></span>
+                            <span className='bg-warning px-2 rounded'>{dinningStart} <small><i className="fas fa-star"></i></small></span>
                             <small> | DINNING</small>
 
                         </div>
                         <div>
-                            <span className='bg-warning px-2 rounded'>3.8 <small><i className="fas fa-star"></i></small></span>
+                            <span className='bg-warning px-2 rounded'>{deliveryStar} <small><i className="fas fa-star"></i></small></span>
                             <small> | DELIVERY</small>
                         </div>
                     </div>
                 </Card.Body>
                 <Card.Footer>
                     <div className='d-flex justify-content-between'>
-                        <Button>Buy Now</Button>
+                        <Button onClick={() => handleBuyNow(_id)}>Buy Now</Button>
 
-                        <button className='btn btn-outline-danger'><span>$</span>70</button>
+                        <button className='btn btn-outline-danger'><span>$</span>{price}</button>
 
                     </div>
                 </Card.Footer>
