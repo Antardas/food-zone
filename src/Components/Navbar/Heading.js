@@ -1,7 +1,11 @@
 import React from 'react';
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 const Heading = () => {
+    const { user,
+        setuser,
+        signInGoogle} = useFire
     return (
         <div>
             <Navbar bg="dark" variant='dark' expand="lg">

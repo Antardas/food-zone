@@ -18,12 +18,12 @@ const Service = () => {
                     </Card.Text>
                     <div className='d-flex justify-content-evenly'>
                         <div>
-                            <span className='bg-warning px-2 rounded'>3.8</span>
+                            <span className='bg-warning px-2 rounded'>3.8 <small><i class="fas fa-star"></i></small></span>
                             <small> | DINNING</small>
 
                         </div>
                         <div>
-                            <span className='bg-warning px-2 rounded'>3.8</span>
+                            <span className='bg-warning px-2 rounded'>3.8 <small><i class="fas fa-star"></i></small></span>
                             <small> | DELIVERY</small>
                         </div>
                     </div>
