@@ -28,4 +28,4 @@ const [user, setuser] = useState({})
     }
 }
 
-export default useFirebase();
+export default useFirebase;

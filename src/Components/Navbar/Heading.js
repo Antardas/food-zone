@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useFirebase from '../../hooks/useFirebase';
 
 const Heading = () => {
     const { user,
         setuser,
-        signInGoogle} = useFire
+        signInGoogle } = useFirebase();
     return (
         <div>
             <Navbar bg="dark" variant='dark' expand="lg">
@@ -27,8 +28,10 @@ const Heading = () => {
                                 </span>
                                 <i className="fas fa-cart-plus"></i>
                             </Nav.Link>
-
-                            <Button variant="danger">Register</Button>
+                            {
+                                user?.email ? <Button variant="danger">Log out</Button> : <Button onClick={signInGoogle} variant="danger">Register</Button>
+                            
+}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
