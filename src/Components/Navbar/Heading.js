@@ -69,7 +69,7 @@ const Heading = () => {
                                 </NavDropdown>,
 
                                 <h6 key={2} className='text-light my-auto mx-lg-2'>{user.displayName}</h6>,
-                                <Button key={3} onClick={signOutUser} variant="danger">Log out</Button>
+                                    <Button key={3} onClick={handleSignOut} variant="danger">Log out</Button>
 
                                 ] : <Button onClick={handleGoogleSignIn} variant="danger">Register</Button>
 
