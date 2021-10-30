@@ -4,7 +4,9 @@ import { Row, Col, Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 const AddFood = () => {
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, watch } = useForm();
+    console.log(watch('price'))
+    console.log('Checking private router');
     const onSubmit = data => {
         axios.post('http://localhost:5000/addFood', {
             data

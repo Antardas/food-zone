@@ -1,20 +1,50 @@
 import React from 'react';
-import { Container, Form, FormControl, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/images/logo.png'
 import useAuth from '../../hooks/useAuth';
-import useFirebase from '../../hooks/useFirebase';
+import { useLocation, useHistory } from 'react-router-dom'
 
 const Heading = () => {
     const { user,
         setUser,
         signInGoogle,
-        signOutUser } = useAuth();
-    // console.log(signOutUser());
+        signOutUser,
+        isLoading,
+        setIsLoading } = useAuth();
+    console.log(isLoading);
+    const history = useHistory();
+    const location = useLocation();
+    const REDIRECT_URL = location.state?.from || '/home';
+
+    const handleGoogleSignIn = () => {
+        signInGoogle()
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                setIsLoading(false);
+                console.log(REDIRECT_URL);
+                history.push(REDIRECT_URL);
+            }).catch(error => alert(error.message, 'line'));
+    }
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                setUser({});
+                setIsLoading(false);
+                history.push('/')
+            }).catch((error) => {
+                setIsLoading(false)
+                alert('Plz Try again!!');
+            });
+    }
+
     return (
         <div>
             <Navbar bg="dark" variant='dark' expand="lg">
                 <Container>
-                    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                    <Navbar.Brand href="#"><img className='col-lg-4 col-4' src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -24,7 +54,7 @@ const Heading = () => {
                         >
                             <Nav.Link className='text-white ' as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link className='text-white ' as={Link} to="/servives">Services</Nav.Link>
-                            <Nav.Link className='text-white ' as={Link} to="/contact">Contact us</Nav.Link>
+                            <Nav.Link className='text-white ' as={Link} to="/addfood">Contact us</Nav.Link>
                             <Nav.Link className='text-white ' as={Link} to="/cart">
                                 <span className='absolute p-2 rounded-circle'>
                                     1
@@ -32,7 +62,16 @@ const Heading = () => {
                                 <i className="fas fa-cart-plus"></i>
                             </Nav.Link>
                             {
-                                user.email ? [<Nav.Link className='text-white ' as={Link} to="/contact">Manage</Nav.Link> ,<Button onClick={signOutUser} variant="danger">Log out</Button>] : <Button onClick={signInGoogle} variant="danger">Register</Button>
+                                user.email ? [<NavDropdown key={4} title="Account & Order" id="collasible-nav-dropdown">
+                                    <NavDropdown.Item href="#action/3.1">My Order</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.2">Mange Order</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to='/addFood'>Add a Food</NavDropdown.Item>
+                                </NavDropdown>,
+
+                                <h6 key={2} className='text-light my-auto mx-lg-2'>{user.displayName}</h6>,
+                                <Button key={3} onClick={signOutUser} variant="danger">Log out</Button>
+
+                                ] : <Button onClick={handleGoogleSignIn} variant="danger">Register</Button>
 
                             }
                         </Nav>

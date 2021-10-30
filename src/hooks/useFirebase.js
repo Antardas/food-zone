@@ -1,33 +1,27 @@
 import { useEffect, useState } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import initializeAuthentication from '../Firebase/firebase.initialize';
+import { useHistory } from "react-router-dom";
+
 initializeAuthentication();
 
 const useFirebase = () => {
     const auth = getAuth();
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
     // Sign in With Google
-    console.log('calling useFirebase')
+    // console.log('calling useFirebase')
     const signInGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                setUser(user);
-            }).catch(error => alert(error.message));
-
+        return signInWithPopup(auth, googleProvider)
 
     }
 
     //Sing out user
     const signOutUser = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            setUser({})
-        }).catch((error) => {
-            // An error happened.
-        });
+        return signOut(auth)
+
     }
 
     // State Change Page reload
@@ -36,19 +30,22 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+                setIsLoading(false);
             } else {
-
                 setUser({});
+                setIsLoading(false);
             }
         })
 
     }, [])
-
+    // console.log("useFirebase", user);
     return {
         user,
         setUser,
         signInGoogle,
-        signOutUser
+        signOutUser,
+        isLoading,
+        setIsLoading
     }
 }
 
