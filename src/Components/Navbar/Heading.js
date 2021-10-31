@@ -12,7 +12,6 @@ const Heading = () => {
         signOutUser,
         isLoading,
         setIsLoading } = useAuth();
-    console.log(isLoading);
     const history = useHistory();
     const location = useLocation();
     const REDIRECT_URL = location.state?.from || '/home';
@@ -23,7 +22,6 @@ const Heading = () => {
                 const user = result.user;
                 setUser(user);
                 setIsLoading(false);
-                console.log(REDIRECT_URL);
                 history.push(REDIRECT_URL);
             }).catch(error => alert(error.message, 'line'));
     }

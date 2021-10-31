@@ -14,7 +14,7 @@ const Service = ({ food }) => {
                 <Card.Img variant="top" src={foodImg} />
                 <Card.Body><Card.Title>{foodName}</Card.Title>
                     <Card.Text>
-                        {description.slice(0, 50)}
+                        {description.length > 50 ? description.slice(0, 50 - 1 ) + "..." : description}
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>

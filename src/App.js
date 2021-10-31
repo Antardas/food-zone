@@ -14,25 +14,27 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Login from './Components/Login/Login';
 import { useState } from 'react';
 import Cart from './Components/Cart/Cart';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   //Add to cart  
-  let [cartItems, setCartItems] = useState([])
-  const handleAddToCart = (items) => {
+  let [cartItems, setCartItems] = useState([]);
+  const handleAddToCart = (food) => {
+    const exist = cartItems.find(item => item._id === food._id);
     let newCart = [];
-    const exist = cartItems.map(item => item._id === items._id);
+    
     if (exist) {
-      for (let i in cartItems) {
-       console.log(i)
-     }
+      const rest = cartItems.filter(cartItem => cartItem._id != food._id);
+      exist.quantity = exist.quantity + 1;
+      newCart = [...rest, food];
+      console.log(exist, food);
       
     }
     else {
-      items.quantity = 1;
-      newCart = [items, ...cartItems];
+      food.quantity = 1;
+      newCart = [...cartItems, food];
     }
     setCartItems(newCart);
-    console.log(cartItems);
   }
 
   return (
@@ -63,6 +65,7 @@ function App() {
               <h3>Not Found</h3>
             </Route>
           </Switch>
+          <Footer></Footer>
         </Router>
       </AuthProvider>
 
