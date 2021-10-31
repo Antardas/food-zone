@@ -8,6 +8,8 @@ import lodingGif from '../../assets/images/loading-gif.gif'
 const Myorders = () => {
     const { user } = useAuth();
     const [orderList, setOrderList] = useState([]);
+    // Get Specefic user order
+    
     useEffect(() => {
         axios.get(`https://agile-woodland-88969.herokuapp.com/getUserOrders/${user.email}`)
             .then(res => setOrderList(res.data))

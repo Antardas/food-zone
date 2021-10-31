@@ -6,7 +6,7 @@ import Service from '../Service/Service';
 
 const Services = () => {
     const [foods, setFoods] = useState([])
-
+// Get all foods from DB
     useEffect(() => {
         axios.get('https://agile-woodland-88969.herokuapp.com/foods')
             .then(res => {

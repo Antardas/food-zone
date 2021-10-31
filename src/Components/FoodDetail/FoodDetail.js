@@ -13,6 +13,8 @@ const FoodDetail = ({ handleAddToCart }) => {
     const { user } = useAuth();
     const history = useHistory();
     const { foodName, description, price, foodImg, deliveryStar, dinningStart, address } = food;
+
+    // Get Items via id
     useEffect(() => {
         axios.get(`https://agile-woodland-88969.herokuapp.com/foods/${id}`)
             .then(res => {
@@ -21,6 +23,8 @@ const FoodDetail = ({ handleAddToCart }) => {
     }, []);
 
     const { register, handleSubmit } = useForm();
+
+    // send place order user input detail to db
     const onSubmit = data => {
         axios.post('https://agile-woodland-88969.herokuapp.com/addOrders', {
             data
@@ -36,7 +40,7 @@ const FoodDetail = ({ handleAddToCart }) => {
 
     };
 
-
+// is data not loaded set a spiner or loader
     if (!food?._id) {
         return <Spinner animation="border" className='mx-auto d-block mt-3' variant="warning" />
     }

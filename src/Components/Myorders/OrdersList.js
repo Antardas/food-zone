@@ -3,7 +3,7 @@ import React from 'react';
 import './orderList.css'
 
 const OrdersList = ({ order, manageOrder }) => {
-    const { foodName, houseNoPostOffice, status, city, _id, price, number, email } = order;
+    const { foodName, houseNoPostOffice, status, city, _id, number, email } = order;
     const handleDelete = (id) => {
         const confirmDeleteOrder = window.confirm("Are you sure you want to delete?");
         if (confirmDeleteOrder) {

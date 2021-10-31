@@ -11,7 +11,6 @@ const Heading = () => {
         setUser,
         signInGoogle,
         signOutUser,
-        isLoading,
         setIsLoading } = useAuth();
     const history = useHistory();
     const location = useLocation();

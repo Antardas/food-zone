@@ -3,7 +3,7 @@ import { Button, Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Service = ({ food }) => {
-    const { _id, foodName, description, price, foodImg, deliveryStar, dinningStart } = food;
+    const { _id, foodName, description, price, foodImg } = food;
     const detailUrl = `/fooddetail/${_id}`
 
     return (

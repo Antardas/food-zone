@@ -26,7 +26,7 @@ function App() {
     let newCart = [];
 
     if (exist) {
-      const rest = cartItems.filter(cartItem => cartItem._id != food._id);
+      const rest = cartItems.filter(cartItem => cartItem._id !== food._id);
       exist.quantity = exist.quantity + 1;
       newCart = [...rest, food];
 

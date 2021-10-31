@@ -1,7 +1,6 @@
 import Button from '@restart/ui/esm/Button';
 import React from 'react';
 import logo from '../../assets/images/google-logo.jpg'
-import useFirebase from '../../hooks/useFirebase';
 import { useHistory, useLocation } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth';
 
