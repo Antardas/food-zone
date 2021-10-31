@@ -3,7 +3,7 @@ import bg from '../../assets/images/bg-shape.png'
 import logo from '../../assets/images/logo.png'
 const Footer = () => {
     return (
-        <div>
+        <div id='footer'>
             <div className='bg-dark w-100 py-5 bg-dark mt-5' style={{ backgroundImage: `url(${bg})` }}>
                 <div className='' style={{ backgroundColor: '' }}>
 

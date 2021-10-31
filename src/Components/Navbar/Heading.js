@@ -3,7 +3,8 @@ import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 import useAuth from '../../hooks/useAuth';
-import { useLocation, useHistory } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const Heading = () => {
     const { user,
@@ -51,8 +52,8 @@ const Heading = () => {
                             navbarScroll
                         >
                             <Nav.Link className='text-white ' as={Link} to="/home">Home</Nav.Link>
-                            <Nav.Link className='text-white ' as={Link} to="/servives">Services</Nav.Link>
-                            <Nav.Link className='text-white ' as={Link} to="/addfood">Contact us</Nav.Link>
+                            <Nav.Link className='text-white ' as={HashLink} to="/home#services">Services</Nav.Link>
+                            <Nav.Link className='text-white ' as={HashLink} to="/home#footer">Contact us</Nav.Link>
                             {
                                 user.email ? [<NavDropdown key={4} title="Account & Order" id="collasible-nav-dropdown">
                                     <NavDropdown.Item as={Link} to="/myOrders">My Orders</NavDropdown.Item>
