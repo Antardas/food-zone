@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './food-detail.css'
 
-const FoodDetail = ({ handleAddToCart}) => {
+const FoodDetail = ({ handleAddToCart }) => {
     const { id } = useParams();
     const [food, setFood] = useState({});
     const { user } = useAuth();
     const history = useHistory();
     const { foodName, description, price, foodImg, deliveryStar, dinningStart, address } = food;
     useEffect(() => {
-        axios.get(`http://localhost:5000/foods/${id}`)
+        axios.get(`https://agile-woodland-88969.herokuapp.com/foods/${id}`)
             .then(res => {
                 setFood(res.data);
             })
@@ -22,12 +22,12 @@ const FoodDetail = ({ handleAddToCart}) => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/addOrders', {
+        axios.post('https://agile-woodland-88969.herokuapp.com/addOrders', {
             data
         }).then(res => {
             // if(res.data.)
             if (res.data.insertedId) {
-history.push('/home')
+                history.push('/home')
                 alert('Place Order succefully')
             } else {
                 alert('Please Try agian!!')
@@ -60,7 +60,7 @@ history.push('/home')
                             <small> | DELIVERY</small>
                         </div>
                     </div>
-                    <h3 className='text-danger mt-3'>$ {price }</h3>
+                    <h3 className='text-danger mt-3'>$ {price}</h3>
                     <h6 className='mt-5'>Address: {address}</h6>
                     {/* <button className='btn-warning btn' onClick={() => handleAddToCart(food)} >Add To Cart</button> */}
                 </div>

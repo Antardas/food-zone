@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 import OrdersList from './OrdersList';
+import lodingGif from '../../assets/images/loading-gif.gif'
 
 const Myorders = () => {
     const { user } = useAuth();
     const [orderList, setOrderList] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5000/getUserOrders/${user.email}`)
+        axios.get(`https://agile-woodland-88969.herokuapp.com/getUserOrders/${user.email}`)
             .then(res => setOrderList(res.data))
     }, [])
 
@@ -30,10 +31,10 @@ const Myorders = () => {
                     </thead>
                     <tbody>
                         {
-                            orderList.map(order => <OrdersList key={order._id}  order={order}></OrdersList>)
+                            orderList.map(order => <OrdersList key={order._id} order={order}></OrdersList>)
                         }
                     </tbody>
-                    
+
                 </Table>
             </div>
         </div>

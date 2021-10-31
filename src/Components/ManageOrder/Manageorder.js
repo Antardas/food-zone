@@ -6,7 +6,7 @@ import OrdersList from '../Myorders/OrdersList';
 const Manageorder = () => {
     const [allorderList, setAllOrderList] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5000/allOrders`)
+        axios.get(`https://agile-woodland-88969.herokuapp.com/allOrders`)
             .then(res => setAllOrderList(res.data))
     }, [])
     return (

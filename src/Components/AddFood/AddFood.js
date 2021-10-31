@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 const AddFood = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/addFood', {
+        axios.post('https://agile-woodland-88969.herokuapp.com/addFood', {
             data
         }).then(res => {
             if (res.data.insertedId) {
@@ -25,19 +25,19 @@ const AddFood = () => {
 
                         <Col>
                             <label className='m-2' htmlFor="foodName">Food Name</label>
-                            <input className='form-control'  type="text" id="foodName" placeholder="Food Name" {...register("foodName", { required: true, maxLength: 80 })} />
+                            <input className='form-control' type="text" id="foodName" placeholder="Food Name" {...register("foodName", { required: true, maxLength: 80 })} />
                         </Col>
                         <Col>
                             <label className='m-2' htmlFor="description">Description</label>
-                            <input className='form-control'  type="text" id='description' placeholder="description" {...register("description", { required: true, })} />
+                            <input className='form-control' type="text" id='description' placeholder="description" {...register("description", { required: true, })} />
                         </Col>
                         <Col>
                             <label className='m-2' htmlFor="price">Price</label>
-                            <input className='form-control' type="number"  id='price' placeholder="price" {...register("price", { required: true})} />
+                            <input className='form-control' type="number" id='price' placeholder="price" {...register("price", { required: true })} />
                         </Col>
                         <Col>
                             <label className='m-2' htmlFor="foodImg">Food Image</label>
-                            <input className='form-control'  type="url" id='foodImg' placeholder="food image" {...register("foodImg", { required: true })} />
+                            <input className='form-control' type="url" id='foodImg' placeholder="food image" {...register("foodImg", { required: true })} />
                         </Col>
                         <Col>
                             <label className='m-2' htmlFor="deliveryStar">Delivery Star</label>
@@ -49,10 +49,10 @@ const AddFood = () => {
                         </Col>
                         <Col>
                             <label className='m-2' htmlFor="address">Address</label>
-                            <input className='form-control'  type="text" placeholder="address" id='address' {...register("address", {})} />
+                            <input className='form-control' type="text" placeholder="address" id='address' {...register("address", {})} />
                         </Col>
                     </Row>
-                    <input className='btn-primary btn ms-auto mt-3'  type="submit" />
+                    <input className='btn-primary btn ms-auto mt-3' type="submit" />
                 </form>
             </Container>
         </div>
