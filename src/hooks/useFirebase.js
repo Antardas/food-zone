@@ -10,8 +10,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    // Sign in With Google
-    // console.log('calling useFirebase')
+
     const signInGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleProvider)
@@ -38,7 +37,6 @@ const useFirebase = () => {
         })
 
     }, [])
-    // console.log("useFirebase", user);
     return {
         user,
         setUser,

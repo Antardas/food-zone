@@ -4,7 +4,6 @@ import CartItem from './CartItem';
 const Cart = ({ foods }) => {
     let totalPrice = 0
     foods.map(food => totalPrice += food.price * food.quantity);
-    console.log(totalPrice)
 
     return (
         <div className='container d-flex'>

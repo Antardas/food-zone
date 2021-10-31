@@ -15,6 +15,8 @@ import Login from './Components/Login/Login';
 import { useState } from 'react';
 import Cart from './Components/Cart/Cart';
 import Footer from './Components/Footer/Footer';
+import Myorders from './Components/Myorders/Myorders';
+import Manageorder from './Components/ManageOrder/Manageorder';
 
 function App() {
   //Add to cart  
@@ -22,13 +24,12 @@ function App() {
   const handleAddToCart = (food) => {
     const exist = cartItems.find(item => item._id === food._id);
     let newCart = [];
-    
+
     if (exist) {
       const rest = cartItems.filter(cartItem => cartItem._id != food._id);
       exist.quantity = exist.quantity + 1;
       newCart = [...rest, food];
-      console.log(exist, food);
-      
+
     }
     else {
       food.quantity = 1;
@@ -61,6 +62,12 @@ function App() {
             <Route path='/cart'>
               <Cart foods={cartItems}></Cart>
             </Route>
+            <PrivateRoute path='/myOrders'>
+              <Myorders></Myorders>
+            </PrivateRoute>
+            <PrivateRoute path='/manageOrders'>
+              <Manageorder></Manageorder>
+            </PrivateRoute>
             <Route path="*">
               <h3>Not Found</h3>
             </Route>

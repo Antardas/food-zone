@@ -13,11 +13,11 @@ const Footer = () => {
                 </div>
                 <div className='d-flex fs-2 justify-content-center text-light mt-5'>
                     <div>
-                        <a className='text-light' href="https://www.google.com"><i class="fab me-4 d-inline-block fa-facebook"></i></a>
-                        <a className='text-light' href="https://www.google.com"><i class="fab me-4 d-inline-block fa-twitter"></i></a>
-                        <a className='text-light' href="https://www.google.com"><i class="fab me-4 d-inline-block fa-instagram"></i></a>
-                        <a className='text-light' href="https://www.google.com"><i class="fab me-4 d-inline-block fa-google-plus"></i></a>
-                        <a className='text-light' href="https://www.google.com"><i class="far me-4 d-inline-block fa-envelope"></i></a>
+                        <a className='text-light' href="https://www.google.com"><i className="fab me-4 d-inline-block fa-facebook"></i></a>
+                        <a className='text-light' href="https://www.google.com"><i className="fab me-4 d-inline-block fa-twitter"></i></a>
+                        <a className='text-light' href="https://www.google.com"><i className="fab me-4 d-inline-block fa-instagram"></i></a>
+                        <a className='text-light' href="https://www.google.com"><i className="fab me-4 d-inline-block fa-google-plus"></i></a>
+                        <a className='text-light' href="https://www.google.com"><i className="far me-4 d-inline-block fa-envelope"></i></a>
                     </div>
 
                 </div>

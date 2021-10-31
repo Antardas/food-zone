@@ -10,7 +10,6 @@ const Login = () => {
     const history = useHistory();
     const location = useLocation();
     const REDIRECT_URL = location.state?.from || '/home';
-    console.log(REDIRECT_URL);
 
     const handleGoogleSignIn = () => {
         signInGoogle()
@@ -18,7 +17,6 @@ const Login = () => {
                 const user = result.user;
                 setUser(user);
                 setIsLoading(false);
-                console.log(REDIRECT_URL);
                 history.push(REDIRECT_URL);
             }).catch(error => alert(error.message, 'line'));
     }

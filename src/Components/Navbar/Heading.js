@@ -53,16 +53,10 @@ const Heading = () => {
                             <Nav.Link className='text-white ' as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link className='text-white ' as={Link} to="/servives">Services</Nav.Link>
                             <Nav.Link className='text-white ' as={Link} to="/addfood">Contact us</Nav.Link>
-                            <Nav.Link className='text-white ' as={Link} to="/cart">
-                                <span className='absolute p-2 rounded-circle'>
-                                    1
-                                </span>
-                                <i className="fas fa-cart-plus"></i>
-                            </Nav.Link>
                             {
                                 user.email ? [<NavDropdown key={4} title="Account & Order" id="collasible-nav-dropdown">
-                                    <NavDropdown.Item href="#action/3.1">My Order</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2">Mange Order</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/myOrders">My Orders</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/manageOrders">Manage All Orders</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to='/addFood'>Add a Food</NavDropdown.Item>
                                 </NavDropdown>,
 

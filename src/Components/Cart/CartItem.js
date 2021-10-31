@@ -2,7 +2,6 @@ import React from 'react';
 
 const CartItem = ({ food }) => {
     const { foodImg, quantity, price } = food;
-    console.log(parseFloat(price) * parseInt(quantity))
     const singleProdductTotalPrice = parseFloat(price) * parseInt(quantity);
     return (
         <div className='d-flex rounded border-2 border-dark outline-dark'>

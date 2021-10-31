@@ -12,7 +12,7 @@ const FoodDetail = ({ handleAddToCart}) => {
     const [food, setFood] = useState({});
     const { user } = useAuth();
     const history = useHistory();
-    const { _id, foodName, description, price, foodImg, deliveryStar, dinningStart, address } = food;
+    const { foodName, description, price, foodImg, deliveryStar, dinningStart, address } = food;
     useEffect(() => {
         axios.get(`http://localhost:5000/foods/${id}`)
             .then(res => {
@@ -22,8 +22,7 @@ const FoodDetail = ({ handleAddToCart}) => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data)
-        axios.post('http://localhost:5000/orders', {
+        axios.post('http://localhost:5000/addOrders', {
             data
         }).then(res => {
             // if(res.data.)
@@ -36,7 +35,6 @@ history.push('/home')
         });
 
     };
-    // console.log(displayName);
 
 
     if (!food?._id) {
@@ -72,9 +70,9 @@ history.push('/home')
                 <input className='form-control mb-4' type="text" defaultValue={user.displayName} placeholder="Coustomer Name" {...register("name", { required: true })} />
                 <input className='form-control mb-4' type="email" defaultValue={user.email} placeholder="email" {...register("email", { required: true })} />
                 <input className='form-control mb-4' type="tel" placeholder="Mobile Number" {...register("number", { required: true, minLength: 6, maxLength: 12 })} />
-                <input className='form-control mb-4' type="text" placeholder="fooName" defaultValue={foodName} {...register("Food Name", { required: true })} />
-                <input className='form-control mb-4' type="text" placeholder="House No Post Office" {...register("HouseNoPostOffice", { required: true })} />
-                <input className='form-control mb-4' type="text" placeholder="City" {...register("City", { required: true })} />
+                <input className='form-control mb-4' type="text" placeholder="fooName" defaultValue={foodName} {...register("foodName", { required: true })} />
+                <input className='form-control mb-4' type="text" placeholder="House No Post Office" {...register("houseNoPostOffice", { required: true })} />
+                <input className='form-control mb-4' type="text" placeholder="City" {...register("city", { required: true })} />
 
                 <input className='btn btn-outline-warning text-dark ms-auto d-block' value='Place Order' type="submit" />
             </form>
