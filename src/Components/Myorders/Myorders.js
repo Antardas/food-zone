@@ -18,7 +18,8 @@ const Myorders = () => {
     return (
         <div style={{ backgroundColor: '#E2F5FF' }}>
             <div className='container py-5 '>
-                <Table className='bg-light rounded py-5' responsive striped bordered hover>
+            <h1>My Order List</h1>
+                <Table className='bg-light mt-3 rounded py-5' responsive striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>
